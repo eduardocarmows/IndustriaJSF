@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Pagina Inicial</title>
+	<style type="text/css">
+.ui-layout-north {
+	z-index: 20 !important;
+	overflow: visible !important;
+}
+
+.ui-layout-north .ui-layout-unit-content {
+	overflow: visible !important;
+}
+</style>
+
+</h:head>
+<h:body>
+		<p:layout fullPage="true">
+		<p:layoutUnit position="north" size="90" resizable="false">
+			<h:outputText value="SISTEMA DE GERENCIAMENTO DE RECEBIMENTOS INDUSTRIAL" />
+
+			<h:form id="formMenuBar">
+				<p:growl id="growl" showDetail="true" sticky="true" />
+				<p:menubar>
+					<p:menuitem value="Home" url="/faces/Sistema/Home/Home.xhtml" />
+					<p:submenu label="Cadastros" icon="ui-icon-document">
+						<p:submenu label="Básicos" icon="ui-icon-contact">
+							<p:menuitem value="Pessoa Juridica" url="/faces/Cadastros/PessoaJuridica/PessoaJuridicaList.xhtml" target="centro"/>
+							<p:menuitem value="Cidade" url="/faces/Cadastros/Cidade/CidadeList.xhtml" target="centro"/>
+						</p:submenu>
+						<p:separator />
+					</p:submenu>
+			
+				</p:menubar>
+			</h:form>
+
+			<h:form target="centro">
+				<p:toolbar>
+					<p:toolbarGroup align="left">
+
+					</p:toolbarGroup>
+
+					<p:toolbarGroup align="right">
+					</p:toolbarGroup>
+				</p:toolbar>
+			</h:form>
+		</p:layoutUnit>
+
+		<p:layoutUnit position="west" size="250" header="Menu Favorito"
+			resizable="true">
+
+			<h:form>
+				<p:menu>
+					<p:submenu label="Cadastros">
+						<p:menuitem value="Pessoa Juridica" url="/faces/Cadastros/PessoaJuridica/PessoaJuridicaList.xhtml" target="centro"/>
+						<p:menuitem value="Cidade" url="/faces/Cadastros/Cidade/CidadeList.xhtml" target="centro"/>
+					</p:submenu>
+				</p:menu>
+			</h:form>
+
+		</p:layoutUnit>
+
+		<p:layoutUnit position="center">
+
+			<iframe name="centro" id="centro"
+				style="width: 100%; height: 100%; background-color: #FFFFFF;"
+				frameborder="0" />
+
+
+		</p:layoutUnit>
+	</p:layout>
+
+</h:body>
+</html>

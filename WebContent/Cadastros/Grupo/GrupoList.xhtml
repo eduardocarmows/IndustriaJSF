@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title></title>
+</h:head>
+<h:body onload="#{grupoCrud.inicializarLista()}">
+
+	<h:form id="formLista">
+        <p:growl></p:growl> 
+		<p:dataTable var="cid" value="#{grupoCrud.lista}" paginator="true"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rows="5"  rowsPerPageTemplate="5,10,15">
+
+
+			<f:facet name="header">
+				<p:spacer height="30"></p:spacer>
+				<div align="left" style="position: absolute; top: 20px; width: 95%;">
+					<p:outputLabel value="Listagem de Grupos"></p:outputLabel>
+				</div>
+				<div align="right"
+					style="position: absolute; top: 12px; width: 95%;">
+					<p:commandButton id="botaoIncluir" value="Incluir" icon="ui-icon-plus"
+						action="#{grupoCrud.incluir}" ajax="false" />
+				</div>
+			</f:facet>
+
+
+
+			<p:column headerText="Id" sortBy="#{cid.id}" filterBy="#{cid.id}"
+				filterMatchMode="contains">
+				<h:outputText value="#{cid.id}" />
+			</p:column>
+
+			<p:column headerText="Nome" sortBy="#{cid.nome}"
+				filterBy="#{cid.nome}" filterMatchMode="contains">
+				<h:outputText value="#{cid.nome}" />
+			</p:column>
+
+	
+			<p:column headerText="" width="30">
+				<p:commandButton action="#{grupoCrud.alterar(cid.id)}" 
+				     icon="ui-icon-pencil" ajax="false" title="Alterar o objeto" />
+			</p:column>
+
+			<p:column headerText="" width="30">
+				<p:commandButton action="#{grupoCrud.excluir(cid.id)}"
+					ajax="false" icon="ui-icon-minus" title="Excluir o objeto"
+					onclick="if (!confirm('Confirma a exclusão?')) return false" />
+			</p:column>
+
+		</p:dataTable>
+
+
+
+
+
+	</h:form>
+
+
+
+</h:body>
+</html>
